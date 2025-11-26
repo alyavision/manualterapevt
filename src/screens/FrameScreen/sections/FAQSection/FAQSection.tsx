@@ -1,0 +1,105 @@
+import React, { useState } from "react";
+
+const faqItems = [
+  {
+    question: "Хруст - это больно?",
+    answer:
+      "Нет. При правильной технике вы чувствуете короткий щелчок без боли - обычно это лёгкое освобождение, тепло и уменьшение напряжения. Больно бывает только при грубом воздействии или при серьёзных проблемах с суставами и позвоночником.",
+  },
+  {
+    question: "Сколько длится процедура?",
+    answer:
+      "Длительность зависит от зоны и задачи: в среднем от 25 до 90 минут - от локальной работы со спиной или шеей до комплексного сеанса.",
+  },
+  {
+    question: "Как проходит первый приём?",
+    answer:
+      "Первый визит начинается с диагностики: сбор анамнеза, осмотр осанки, тесты подвижности, пальпация. После анализа выбирается тактика и проводятся безопасные мануальные техники.",
+  },
+  {
+    question: "Сколько сеансов обычно нужно?",
+    answer:
+      "При острой боли достаточно 1-3 визитов, при хронических состояниях и выраженных нарушениях осанки курс составляет 5-8 сеансов с поддержкой раз в 1-2 месяца. План обсуждается после диагностики.",
+  },
+  {
+    question: "Кому нельзя к мануальному терапевту?",
+    answer:
+      "Есть противопоказания: острые воспаления, высокая температура, свежие травмы, тяжёлые сердечно-сосудистые заболевания, онкология, заболевания крови и позвоночника в стадии обострения. В сомнительных случаях нужна консультация врача и результаты обследований.",
+  },
+  {
+    question: "Помогает ли мануальная терапия при протрузиях и грыжах?",
+    answer:
+      "Терапия не убирает грыжу, но снижает боль, снимает мышечный спазм, улучшает подвижность и качество жизни. Работа проводится мягко, с опорой на МРТ и заключение врача, только в безопасном объёме.",
+  },
+  {
+    question: "Нужна ли подготовка к сеансу?",
+    answer:
+      "Специальная подготовка не нужна: приходите в удобной одежде, не ешьте тяжёлую пищу за 1,5-2 часа и возьмите результаты обследований (МРТ, рентген, заключения), если они есть.",
+  },
+];
+
+export const FAQSection = (): JSX.Element => {
+  const [openQuestion, setOpenQuestion] = useState<string | null>(faqItems[0].question);
+
+  const toggleQuestion = (question: string): void => {
+    setOpenQuestion((prev) => (prev === question ? null : question));
+  };
+
+  return (
+    <section className="flex flex-col gap-10">
+      <header className="grid grid-cols-12">
+        <div className="col-span-12 space-y-2 text-center">
+          <span className="typo-section-title mx-auto block">FAQ</span>
+          <h2 className="typo-h2 text-text-colorsdark-gray">
+            Часто задаваемые вопросы
+          </h2>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-12">
+        <div className="col-span-12 flex flex-col gap-3 md:col-span-10 md:col-start-2">
+          {faqItems.map(({ question, answer }) => {
+            const isOpen = openQuestion === question;
+
+            return (
+              <div
+                key={question}
+                className="rounded-[20px] border border-[#59b7fd] bg-white p-1 shadow-drop-shadow-medium"
+              >
+                <div className="rounded-[20px] bg-white px-5 py-4">
+                  <button
+                    type="button"
+                    onClick={() => toggleQuestion(question)}
+                    className="flex w-full items-center justify-between gap-4 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <h3 className="typo-h3 text-text-colorsdark-gray">
+                      {question}
+                    </h3>
+
+                    <span
+                      className={`flex h-9 w-9 items-center justify-center rounded-full border border-accent-colorslight-blue text-base font-semibold text-accent-colorslight-blue transition-transform duration-200 ${isOpen ? "rotate-45" : ""}`}
+                    >
+                      +
+                    </span>
+                  </button>
+
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-[320px]" : "max-h-0"}`}
+                  >
+                    <div className="border-t border-[#F2F4F7] pt-3">
+                      <p className="typo-body text-text-colorslight-gray">
+                        {answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+

@@ -1,0 +1,1 @@
+export { TrustedPlatformsSection } from "./TrustedPlatformsSection";
