@@ -181,7 +181,13 @@ export const FrameScreen = (): ReactElement => {
     const offset = direction === "left" ? -cardWidth : cardWidth;
 
     pauseDiplomaAutoScroll(ARROW_PAUSE_MS);
-    el.scrollBy({ left: offset, behavior: "smooth" });
+    
+    el.scrollTo({
+      left: el.scrollLeft + offset,
+      behavior: "smooth",
+    });
+    
+    setTimeout(() => resumeDiplomaAutoScroll(), ARROW_PAUSE_MS);
   };
 
   return (
@@ -282,8 +288,10 @@ export const FrameScreen = (): ReactElement => {
                 onMouseLeave={(): void => resumeDiplomaAutoScroll()}
                 onTouchStart={(): void => pauseDiplomaAutoScroll()}
                 onTouchEnd={(): void => {
-                  pauseDiplomaAutoScroll();
-                  setTimeout(() => resumeDiplomaAutoScroll(), ARROW_PAUSE_MS);
+                  const timeoutId = window.setTimeout(() => {
+                    resumeDiplomaAutoScroll();
+                  }, ARROW_PAUSE_MS);
+                  diplomaResumeTimeoutRef.current = timeoutId;
                 }}
                 onTouchCancel={(): void => resumeDiplomaAutoScroll()}
                 onScroll={handleDiplomaScroll}

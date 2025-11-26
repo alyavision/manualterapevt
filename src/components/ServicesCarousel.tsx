@@ -157,7 +157,13 @@ export const ServicesCarousel = (): JSX.Element => {
     const offset = direction === "left" ? -cardWidth : cardWidth;
 
     pauseAutoScroll(ARROW_PAUSE_MS);
-    el.scrollBy({ left: offset, behavior: "smooth" });
+    
+    el.scrollTo({
+      left: el.scrollLeft + offset,
+      behavior: "smooth",
+    });
+    
+    setTimeout(() => resumeAutoScroll(), ARROW_PAUSE_MS);
   };
 
   return (
@@ -229,8 +235,10 @@ export const ServicesCarousel = (): JSX.Element => {
           onMouseLeave={(): void => resumeAutoScroll()}
           onTouchStart={(): void => pauseAutoScroll()}
           onTouchEnd={(): void => {
-            pauseAutoScroll();
-            setTimeout(() => resumeAutoScroll(), ARROW_PAUSE_MS);
+            const timeoutId = window.setTimeout(() => {
+              resumeAutoScroll();
+            }, ARROW_PAUSE_MS);
+            resumeTimeoutRef.current = timeoutId;
           }}
           onTouchCancel={(): void => resumeAutoScroll()}
           onScroll={handleScroll}

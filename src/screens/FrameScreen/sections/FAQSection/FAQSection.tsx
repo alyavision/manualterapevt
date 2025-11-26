@@ -39,7 +39,7 @@ const faqItems = [
 ];
 
 export const FAQSection = (): JSX.Element => {
-  const [openQuestion, setOpenQuestion] = useState<string | null>(faqItems[0].question);
+  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
 
   const toggleQuestion = (question: string): void => {
     setOpenQuestion((prev) => (prev === question ? null : question));
