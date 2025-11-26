@@ -4,13 +4,13 @@ export const StructuredData = (): JSX.Element => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://your-domain.com",
+    "@id": "https://manual-hijama.uz",
     name: "Мануальный терапевт Руслан Артыков",
     alternateName: "Руслан Артыков - Мануальный терапевт в Ташкенте",
     description:
       "Сертифицированный мануальный терапевт с 7+ лет опыта. Лечение боли в спине, шее, суставах. Массаж, мануальная терапия, хиджама, моксотерапия в Ташкенте.",
-    image: "https://your-domain.com/Ruslan%20Artjkov.webp",
-    url: "https://your-domain.com",
+    image: "https://manual-hijama.uz/Ruslan%20Artjkov.webp",
+    url: "https://manual-hijama.uz",
     telephone: "+998998385885",
     priceRange: "$$",
     address: {
@@ -96,7 +96,7 @@ export const StructuredData = (): JSX.Element => {
     jobTitle: "Мануальный терапевт",
     description:
       "Сертифицированный мануальный терапевт с 7+ лет опыта в Ташкенте",
-    image: "https://your-domain.com/Ruslan%20Artjkov.webp",
+    image: "https://manual-hijama.uz/Ruslan%20Artjkov.webp",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Ташкент",
