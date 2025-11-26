@@ -228,7 +228,10 @@ export const ServicesCarousel = (): JSX.Element => {
           onMouseEnter={(): void => pauseAutoScroll()}
           onMouseLeave={(): void => resumeAutoScroll()}
           onTouchStart={(): void => pauseAutoScroll()}
-          onTouchEnd={(): void => pauseAutoScroll(ARROW_PAUSE_MS)}
+          onTouchEnd={(): void => {
+            pauseAutoScroll();
+            setTimeout(() => resumeAutoScroll(), ARROW_PAUSE_MS);
+          }}
           onTouchCancel={(): void => resumeAutoScroll()}
           onScroll={handleScroll}
         >

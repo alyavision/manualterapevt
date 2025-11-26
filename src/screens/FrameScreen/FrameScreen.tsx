@@ -281,7 +281,10 @@ export const FrameScreen = (): ReactElement => {
                 onMouseEnter={(): void => pauseDiplomaAutoScroll()}
                 onMouseLeave={(): void => resumeDiplomaAutoScroll()}
                 onTouchStart={(): void => pauseDiplomaAutoScroll()}
-                onTouchEnd={(): void => pauseDiplomaAutoScroll(ARROW_PAUSE_MS)}
+                onTouchEnd={(): void => {
+                  pauseDiplomaAutoScroll();
+                  setTimeout(() => resumeDiplomaAutoScroll(), ARROW_PAUSE_MS);
+                }}
                 onTouchCancel={(): void => resumeDiplomaAutoScroll()}
                 onScroll={handleDiplomaScroll}
               >
