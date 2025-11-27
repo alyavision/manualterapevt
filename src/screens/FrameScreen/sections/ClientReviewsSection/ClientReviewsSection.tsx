@@ -40,6 +40,9 @@ export const ClientReviewsSection = (): JSX.Element => {
                       src={review.avatar}
                       alt={review.name}
                       className="object-cover"
+                      width="48"
+                      height="48"
+                      loading="lazy"
                     />
                   </Avatar>
                   <div className="typo-small font-semibold text-text-colorsdark-gray">
@@ -53,6 +56,9 @@ export const ClientReviewsSection = (): JSX.Element => {
                       className="h-3.5 w-3.5"
                       alt="Star"
                       src="/star-3.svg"
+                      width="14"
+                      height="14"
+                      loading="lazy"
                     />
                   ))}
                 </div>

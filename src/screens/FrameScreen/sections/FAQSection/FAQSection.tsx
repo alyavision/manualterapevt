@@ -78,7 +78,7 @@ export const FAQSection = (): JSX.Element => {
                     </h3>
 
                     <span
-                      className={`flex h-9 w-9 items-center justify-center rounded-full border border-accent-colorslight-blue text-base font-semibold text-accent-colorslight-blue transition-transform duration-200 ${isOpen ? "rotate-45" : ""}`}
+                      className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-accent-colorslight-blue text-sm font-semibold text-accent-colorslight-blue transition-transform duration-200 md:h-8 md:w-8 md:text-base ${isOpen ? "rotate-45" : ""}`}
                     >
                       +
                     </span>

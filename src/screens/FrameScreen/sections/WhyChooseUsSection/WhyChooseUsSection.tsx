@@ -1,3 +1,5 @@
+import { ResponsiveImage } from "../../../../components/ResponsiveImage";
+
 const contentBlocks = [
   {
     id: 1,
@@ -57,10 +59,15 @@ export const WhyChooseUsSection = (): JSX.Element => {
                   isImageLeft ? "md:order-1" : "md:order-2"
                 } md:col-span-5`}
               >
-                <img
+                <ResponsiveImage
                   src={block.imageSrc}
                   alt={block.imageAlt}
                   className="h-auto w-full max-w-[520px] rounded-[20px] object-cover"
+                  mobileWidth={380}
+                  tabletWidth={520}
+                  desktopWidth={800}
+                  width={520}
+                  height={400}
                 />
               </div>
 

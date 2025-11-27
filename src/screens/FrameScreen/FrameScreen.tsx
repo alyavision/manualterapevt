@@ -166,19 +166,26 @@ export const FrameScreen = (): ReactElement => {
     const segment = diplomaSegmentWidthRef.current;
     if (!el || !segment) return;
 
-    if (el.scrollLeft >= segment * 2) {
-      el.scrollLeft -= segment;
-    } else if (el.scrollLeft <= segment * 0.3) {
-      el.scrollLeft += segment;
-    }
+    requestAnimationFrame(() => {
+      if (el.scrollLeft >= segment * 2) {
+        el.scrollLeft -= segment;
+      } else if (el.scrollLeft <= segment * 0.3) {
+        el.scrollLeft += segment;
+      }
+    });
   };
 
   const scrollDiplomaByCard = (direction: "left" | "right"): void => {
     const el = diplomaTrackRef.current;
     if (!el) return;
 
-    const cardWidth = (diplomaCardRef.current?.offsetWidth ?? 300) + 24;
-    const offset = direction === "left" ? -cardWidth : cardWidth;
+    const cardElement = diplomaCardRef.current;
+    if (!cardElement) return;
+
+    const cardWidth = cardElement.offsetWidth;
+    const gap = 24;
+    const scrollAmount = cardWidth + gap;
+    const offset = direction === "left" ? -scrollAmount : scrollAmount;
 
     pauseDiplomaAutoScroll(ARROW_PAUSE_MS);
     
@@ -232,7 +239,7 @@ export const FrameScreen = (): ReactElement => {
               className="hidden h-9 items-center gap-2 rounded-lg bg-[#59b7fd] px-4 py-0 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#59b7fd]/85 md:inline-flex"
             >
               <a
-                href="https://t.me/Rusaro"
+                href="https://t.me/Rusaro?text=Здравствуйте%21%20Хочу%20получить%20консультацию.%20Подскажите%2C%20пожалуйста%2C%20свободное%20время%20для%20записи%3F"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -244,7 +251,7 @@ export const FrameScreen = (): ReactElement => {
               <MobileMenu
                 navigationItems={[
                   ...navigationLinks,
-                  { label: "Связаться со мной", href: "https://t.me/Rusaro" },
+                  { label: "Связаться со мной", href: "https://t.me/Rusaro?text=Здравствуйте%21%20Хочу%20получить%20консультацию.%20Подскажите%2C%20пожалуйста%2C%20свободное%20время%20для%20записи%3F" },
                 ]}
               />
             </div>
@@ -283,7 +290,8 @@ export const FrameScreen = (): ReactElement => {
 
               <div
                 ref={diplomaTrackRef}
-                className="flex gap-6 overflow-x-auto scroll-smooth px-1 py-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                className="flex gap-6 overflow-x-auto px-1 py-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                style={{ scrollBehavior: "auto" }}
                 onMouseEnter={(): void => pauseDiplomaAutoScroll()}
                 onMouseLeave={(): void => resumeDiplomaAutoScroll()}
                 onTouchStart={(): void => pauseDiplomaAutoScroll()}

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import { ResponsiveImage } from "./ResponsiveImage";
 
 type AnimatedImageProps = {
   src: string;
@@ -7,6 +8,8 @@ type AnimatedImageProps = {
   className?: string;
   animationType?: "slide-in-left" | "slide-in-right";
   containerClassName?: string;
+  width?: number;
+  height?: number;
 };
 
 export const AnimatedImage = ({
@@ -15,6 +18,8 @@ export const AnimatedImage = ({
   className,
   animationType = "slide-in-right",
   containerClassName,
+  width,
+  height,
 }: AnimatedImageProps): JSX.Element => {
   const elementRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -73,12 +78,16 @@ export const AnimatedImage = ({
           : { willChange: "transform, opacity" }
       }
     >
-      <img
+      <ResponsiveImage
         src={src}
         alt={alt}
         className={className}
         onError={() => setImageError(true)}
-        loading="lazy"
+        mobileWidth={348}
+        tabletWidth={520}
+        desktopWidth={640}
+        width={width}
+        height={height}
       />
     </div>
   );

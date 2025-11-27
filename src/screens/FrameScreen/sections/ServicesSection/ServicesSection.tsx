@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
+import { LazyIframe } from "../../../../components/LazyIframe";
 
 const testimonials = [
   {
@@ -63,13 +64,14 @@ export const ServicesSection = (): JSX.Element => {
               className={`${testimonial.bgColor} rounded-xl border-0 shadow-[0px_1px_2px_#0000000d]`}
             >
               <CardContent className="flex flex-col gap-4 p-0">
-                <div className="flex items-center justify-center rounded-[20px] border border-[#59b7fd] p-1 shadow-drop-shadow-medium">
-                  <iframe
-                    className="h-40 w-full rounded-[20px] sm:h-48"
-                    src={`https://www.youtube.com/embed/${testimonial.videoId}`}
+                <div className="flex items-center justify-center rounded-[20px] border border-[#59b7fd] p-1 shadow-drop-shadow-medium overflow-hidden">
+                  <LazyIframe
+                    className="h-40 w-full rounded-[20px] sm:h-48 aspect-video"
+                    src={`https://www.youtube.com/embed/${testimonial.videoId}?rel=0&modestbranding=1`}
                     title={`Видео отзыв от ${testimonial.name}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
                   />
                 </div>
 

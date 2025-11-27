@@ -35,8 +35,17 @@ export const HeaderSection = (): JSX.Element => {
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 opacity-0 animate-fade-up" style={{ animationDelay: "0.4s" }}>
-            <Button className="h-12 min-w-[210px] rounded-xl bg-primary-colorssky-blue px-6 py-3 hover:bg-primary-colorssky-blue/90">
-              Получить консультацию
+            <Button
+              asChild
+              className="h-12 min-w-[210px] rounded-xl bg-primary-colorssky-blue px-6 py-3 hover:bg-primary-colorssky-blue/90"
+            >
+              <a
+                href="https://t.me/Rusaro?text=Здравствуйте%21%20Хочу%20получить%20консультацию.%20Подскажите%2C%20пожалуйста%2C%20свободное%20время%20для%20записи%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Получить консультацию
+              </a>
             </Button>
             <p className="typo-small text-text-colorslight-gray sm:flex-1">
               Принимаю только по записи, работаю индивидуально с каждым кейсом.
@@ -53,6 +62,8 @@ export const HeaderSection = (): JSX.Element => {
               alt="Руслан Артыков"
               className="relative h-auto w-full rounded-[32px] object-cover"
               animationType="slide-in-right"
+              width={640}
+              height={640}
             />
           </div>
         </div>

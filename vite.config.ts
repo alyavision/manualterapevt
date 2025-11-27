@@ -14,19 +14,33 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom"],
-          ui: ["lucide-react", "@radix-ui/react-slot", "@radix-ui/react-avatar"],
+        manualChunks: (id) => {
+          if (id.includes("node_modules")) {
+            if (id.includes("react") || id.includes("react-dom")) {
+              return "vendor-react";
+            }
+            if (id.includes("@radix-ui")) {
+              return "vendor-radix";
+            }
+            return "vendor";
+          }
         },
+        assetFileNames: "assets/[name]-[hash][extname]",
+        chunkFileNames: "assets/[name]-[hash].js",
+        entryFileNames: "assets/[name]-[hash].js",
       },
     },
     chunkSizeWarningLimit: 1000,
     minify: "esbuild",
     esbuild: {
       drop: ["console", "debugger"],
+      legalComments: "none",
     },
+    reportCompressedSize: false,
+    sourcemap: false,
   },
   optimizeDeps: {
-    include: ["react", "react-dom", "lucide-react"],
+    include: ["react", "react-dom"],
+    exclude: ["lucide-react"],
   },
 });

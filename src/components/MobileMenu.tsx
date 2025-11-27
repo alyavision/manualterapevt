@@ -134,7 +134,7 @@ export const MobileMenu = ({
                   className="mt-auto h-12 rounded-xl bg-primary-colorssky-blue py-3 text-white hover:bg-primary-colorssky-blue/90"
                 >
                   <a
-                    href="https://t.me/Rusaro"
+                    href="https://t.me/Rusaro?text=Здравствуйте%21%20Хочу%20получить%20консультацию.%20Подскажите%2C%20пожалуйста%2C%20свободное%20время%20для%20записи%3F"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(): void => setIsOpen(false)}

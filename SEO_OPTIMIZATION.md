@@ -121,3 +121,4 @@
 - **SEO Score:** > 95
 - **Core Web Vitals:** Все зеленые
 
+

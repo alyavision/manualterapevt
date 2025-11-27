@@ -142,19 +142,26 @@ export const ServicesCarousel = (): JSX.Element => {
     const segment = segmentWidthRef.current;
     if (!el || !segment) return;
 
-    if (el.scrollLeft >= segment * 2) {
-      el.scrollLeft -= segment;
-    } else if (el.scrollLeft <= segment * 0.3) {
-      el.scrollLeft += segment;
-    }
+    requestAnimationFrame(() => {
+      if (el.scrollLeft >= segment * 2) {
+        el.scrollLeft -= segment;
+      } else if (el.scrollLeft <= segment * 0.3) {
+        el.scrollLeft += segment;
+      }
+    });
   };
 
   const scrollByCard = (direction: "left" | "right"): void => {
     const el = trackRef.current;
     if (!el) return;
 
-    const cardWidth = (cardRef.current?.offsetWidth ?? 280) + 24;
-    const offset = direction === "left" ? -cardWidth : cardWidth;
+    const cardElement = cardRef.current;
+    if (!cardElement) return;
+
+    const cardWidth = cardElement.offsetWidth;
+    const gap = 24;
+    const scrollAmount = cardWidth + gap;
+    const offset = direction === "left" ? -scrollAmount : scrollAmount;
 
     pauseAutoScroll(ARROW_PAUSE_MS);
     
@@ -228,9 +235,10 @@ export const ServicesCarousel = (): JSX.Element => {
         <div
           ref={trackRef}
           className={clsx(
-            "flex items-stretch gap-6 overflow-x-auto scroll-smooth px-1 py-2",
+            "flex items-stretch gap-6 overflow-x-auto px-1 py-2",
             "[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden",
           )}
+          style={{ scrollBehavior: "auto" }}
           onMouseEnter={(): void => pauseAutoScroll()}
           onMouseLeave={(): void => resumeAutoScroll()}
           onTouchStart={(): void => pauseAutoScroll()}

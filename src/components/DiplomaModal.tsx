@@ -99,6 +99,10 @@ export const DiplomaModal = ({
             src={src}
             alt={alt}
             className="h-auto w-full rounded-lg object-contain"
+            loading="eager"
+            decoding="async"
+            width="1200"
+            height="850"
           />
         </div>
       </div>
