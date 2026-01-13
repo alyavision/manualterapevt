@@ -96,3 +96,5 @@ const generateSrcSet = (baseSrc: string, widths: number[]): string => {
 3. Страница загружается быстрее
 4. LCP улучшился
 
+
+

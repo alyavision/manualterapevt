@@ -74,7 +74,7 @@ export const AppointmentBookingSection = (): JSX.Element => {
       <div className="lg:col-span-7">
         <div className="h-[400px] w-full overflow-hidden rounded-xl sm:h-[500px]">
           <LazyIframe
-            src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=133464079129"
+            src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=160982765150"
             width="100%"
             height="100%"
             allowFullScreen
