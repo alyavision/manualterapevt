@@ -53,7 +53,7 @@ export const ServicesSection = (): JSX.Element => {
     <section className="flex flex-col gap-12">
       <header className="grid grid-cols-12">
         <h2 className="col-span-12 text-center typo-h2 text-text-colorsdark-gray">
-          Отзывы клиентов о мануальном терапевте в Ташкенте
+          Отзывы о костоправе и мануальном терапевте в Ташкенте
         </h2>
       </header>
 

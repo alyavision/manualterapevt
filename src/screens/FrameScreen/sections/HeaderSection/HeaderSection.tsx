@@ -20,10 +20,21 @@ export const HeaderSection = (): JSX.Element => {
             </Badge>
 
             <div className="flex max-w-[640px] flex-col gap-4 sm:gap-5">
-              <h1 className="typo-h1 text-text-colorsdark-gray break-all opacity-0 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-                <span className="block text-[#59b7fd]">Сертифицированный</span>
-                <span className="text-[#354b5e]">
-                  Мануальный терапевт в Ташкенте
+              <h1
+                className="m-0 text-[20px] font-bold leading-[1.2] tracking-[-0.01em] text-text-colorsdark-gray opacity-0 animate-fade-up min-[400px]:text-[24px] sm:text-[32px] md:text-[40px] md:leading-[1.12] lg:text-[56px] lg:leading-[1.1]"
+                style={{ animationDelay: "0.2s" }}
+              >
+                <span className="block text-[#59b7fd] sm:whitespace-nowrap">
+                  Сертифицированный
+                </span>
+                <span className="block text-[#354b5e] break-words lg:hidden">
+                  Мануальный терапевт-Костоправ в Ташкенте
+                </span>
+                <span className="hidden text-[#354b5e] lg:block">
+                  Мануальный терапевт
+                </span>
+                <span className="hidden text-[#354b5e] lg:block">
+                  Костоправ в Ташкенте
                 </span>
               </h1>
 

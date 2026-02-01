@@ -16,7 +16,7 @@ export const FooterSection = (): JSX.Element => {
               </span>
               <br />
               <span className="text-[#d8e7f3]">
-                Мануальный терапевт в Ташкенте
+                Костоправ, мануальный терапевт в Ташкенте
               </span>
             </p>
           </div>
@@ -30,7 +30,7 @@ export const FooterSection = (): JSX.Element => {
           </p>
 
           <p className="typo-small text-white text-center sm:text-right">
-            <span className="text-accent-colorslight-blue">Мануальный терапевт в Ташкенте</span>&nbsp;&nbsp;|&nbsp;&nbsp;Все права защищены
+            <span className="text-accent-colorslight-blue">Костоправ Ташкент, мануальный терапевт</span>&nbsp;&nbsp;|&nbsp;&nbsp;Все права защищены
           </p>
         </div>
       </div>
